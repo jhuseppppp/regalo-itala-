@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Sorpresa 💌</title>
+    <style>
+        body {
+            background-color: pink;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+        }
+
+        .envelope {
+            width: 200px;
+            height: 120px;
+            background-color: #ff4c4c;
+            position: relative;
+            border-radius: 10px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .envelope:hover {
+            transform: scale(1.05);
+        }
+
+        .flap {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 0;
+            border-left: 100px solid transparent;
+            border-right: 100px solid transparent;
+            border-bottom: 60px solid #ff6666;
+            z-index: 2;
+            transition: transform 0.5s ease;
+        }
+
+        .message {
+            display: none;
+            margin-top: 30px;
+            font-size: 28px;
+            color: #d00000;
+            animation: fadeIn 1s ease forwards;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .buttons {
+            margin-top: 20px;
+        }
+
+        .btn {
+            background-color: #c2185b;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            margin: 0 10px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .btn:hover {
+            background-color: #a3154a;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="envelope" id="envelope">
+        <div class="flap" id="flap"></div>
+    </div>
+
+    <div class="message" id="message">Te amo 💌</div>
+
+    <div class="buttons">
+        <button class="btn" onclick="abrirSobre()">Abrir</button>
+        <button class="btn" onclick="reiniciar()">Reiniciar</button>
+    </div>
+
+    <script>
+        function abrirSobre() {
+            const flap = document.getElementById('flap');
+            const mensaje = document.getElementById('message');
+            flap.style.transform = "rotateX(180deg)";
+            mensaje.style.display = "block";
+        }
+
+        function reiniciar() {
+            const flap = document.getElementById('flap');
+            const mensaje = document.getElementById('message');
+            flap.style.transform = "rotateX(0deg)";
+            mensaje.style.display = "none";
+        }
+    </script>
+
+</body>
+</html>
